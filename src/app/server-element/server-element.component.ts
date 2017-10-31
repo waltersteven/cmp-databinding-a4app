@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-server-element',
   templateUrl: './server-element.component.html',
-  styleUrls: ['./server-element.component.css']
+  styleUrls: ['./server-element.component.css'],
+  encapsulation: ViewEncapsulation.Emulated //To expose our style to every component, Emulated is the default, alternatives: None, Native.
 })
 export class ServerElementComponent implements OnInit {
   //With Input we expose the element property to the others components in order to RECEIVE data from app.component.html. 
