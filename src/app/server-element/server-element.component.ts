@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./server-element.component.css']
 })
 export class ServerElementComponent implements OnInit {
-  //With Input we expose the element property to the others components. 
+  //With Input we expose the element property to the others components in order to RECEIVE data from app.component.html. 
   //The string passed works as an alias, now you have to use it, 'element' will no longer work.
   @Input('srvElement') element: {type: string, name: string, content: string}; //Javascript object.
 
