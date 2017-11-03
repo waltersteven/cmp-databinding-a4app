@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation, OnChanges, SimpleChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, OnChanges, SimpleChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy, ViewChild, ElementRef, ContentChild } from '@angular/core';
 
 @Component({
   selector: 'app-server-element',
@@ -12,6 +12,7 @@ export class ServerElementComponent implements OnInit, OnChanges, DoCheck, After
   @Input('srvElement') element:  {type: string, name: string, content: string}; //Javascript object.
   @Input() name: string;
   @ViewChild('heading') header: ElementRef; //heading is the name of the local reference in server-element.html
+  @ContentChild('contentParagraph') paragraph: ElementRef; //contentParagraph is the name of the local reference, here we obtain data of another component
 
   constructor() {
     console.log('constructor called!');
@@ -25,7 +26,7 @@ export class ServerElementComponent implements OnInit, OnChanges, DoCheck, After
   ngOnInit() { //Called once the component is initialized.
     console.log('ngOnInit called!');
     console.log('Text content:' + this.header.nativeElement.textContent);
-        
+    console.log('Text content of paragraph in app.component: ' + this.paragraph.nativeElement.textContent);    
   }
 
   ngDoCheck(){ //Called every change detection run
@@ -33,7 +34,8 @@ export class ServerElementComponent implements OnInit, OnChanges, DoCheck, After
   }
 
   ngAfterContentInit(){ //Called after ng-content has been projected into view.
-    console.log('ngAfterContentIinit called!');    
+    console.log('ngAfterContentIinit called!');
+    console.log('Text content of paragraph in app.component: ' + this.paragraph.nativeElement.textContent); //it shows a value when ng-content shows data.
   }
 
   ngAfterContentChecked(){ //Called everytime the projected content has been checked.

@@ -10,7 +10,7 @@
       <button class="btn btn-danger" (click)="onDestroyFirst()">Destroy first Element</button>
       <!--We pass the serverElement to input:srvElement in server-element -->
       <app-server-element *ngFor="let serverElement of serverElements" [srvElement] = "serverElement" [name] = "serverElement.name" >
-          <p> <!-- Thanks of ng-content all this code will be show in server-element component, but first compiled here. -->
+          <p #contentParagraph> <!-- Thanks of ng-content all this code will be show in server-element component, but first compiled here. -->
             <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
             <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
           </p>
