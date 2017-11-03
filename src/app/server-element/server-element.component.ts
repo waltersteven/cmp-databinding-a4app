@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation, OnChanges, SimpleChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, OnChanges, SimpleChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-server-element',
@@ -11,6 +11,8 @@ export class ServerElementComponent implements OnInit, OnChanges, DoCheck, After
   //The string passed works as an alias, now you have to use it, 'element' will no longer work.
   @Input('srvElement') element:  {type: string, name: string, content: string}; //Javascript object.
   @Input() name: string;
+  @ViewChild('heading') header: ElementRef; //heading is the name of the local reference in server-element.html
+
   constructor() {
     console.log('constructor called!');
    }
@@ -21,7 +23,9 @@ export class ServerElementComponent implements OnInit, OnChanges, DoCheck, After
   }
 
   ngOnInit() { //Called once the component is initialized.
-    console.log('ngOnInit called!');    
+    console.log('ngOnInit called!');
+    console.log('Text content:' + this.header.nativeElement.textContent);
+        
   }
 
   ngDoCheck(){ //Called every change detection run
@@ -37,7 +41,8 @@ export class ServerElementComponent implements OnInit, OnChanges, DoCheck, After
   }
 
   ngAfterViewInit(){ //Called after the component's view has been initialized.
-    console.log('ngAfterViewInit called!');    
+    console.log('ngAfterViewInit called!');
+    console.log('Text content:' + this.header.nativeElement.textContent);    
   }
 
   ngAfterViewChecked(){ //Called everytime the view has been checked.
