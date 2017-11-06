@@ -11,6 +11,7 @@ export class ServerElementComponent implements OnInit, OnChanges, DoCheck, After
   //The string passed works as an alias, now you have to use it, 'element' will no longer work.
   @Input('srvElement') element:  {type: string, name: string, content: string}; //Javascript object.
   @Input() name: string;
+  
   @ViewChild('heading') header: ElementRef; //heading is the name of the local reference in server-element.html
   @ContentChild('contentParagraph') paragraph: ElementRef; //contentParagraph is the name of the local reference, here we obtain data of another component
 
